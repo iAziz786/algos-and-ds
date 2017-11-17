@@ -2,11 +2,13 @@ package main
 
 import "fmt"
 
-// You can include initializer in var declaration
-var i, j int = 1, 2
+// Short variable declarations are ONLY AVAILABLE WITHIN func
+// So, := will not work here
 
 func main() {
-	// If initializer in present, variable gets it's type upon value
+	var i, j int = 1, 2
+	k := 3 // Short variable declaration with implicit type
 	var c, python, java = true, false, "no!"
-	fmt.Println(i, j, c, python, java)
+
+	fmt.Println(i, j, k, c, python, java)
 }
