@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-func split(sum int) (x, y int) {
-	x = sum * 4 / 9
-	y = sum - x
-	return
-}
+// var for multiple variable declaration, last one is type
+var c, python, java bool
 
 func main() {
-	fmt.Println(split(2))
+	// You can declare variable within function too
+	var i int
+	// Default for int = 0, and for bool = false
+	fmt.Println(i, c, python, java)
 }
