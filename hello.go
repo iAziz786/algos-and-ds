@@ -2,12 +2,11 @@ package main
 
 import "fmt"
 
-// var for multiple variable declaration, last one is type
-var c, python, java bool
+// You can include initializer in var declaration
+var i, j int = 1, 2
 
 func main() {
-	// You can declare variable within function too
-	var i int
-	// Default for int = 0, and for bool = false
-	fmt.Println(i, c, python, java)
+	// If initializer in present, variable gets it's type upon value
+	var c, python, java = true, false, "no!"
+	fmt.Println(i, j, c, python, java)
 }
