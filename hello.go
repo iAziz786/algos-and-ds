@@ -5,10 +5,9 @@ import (
 )
 
 func main() {
-	var i int
-	var f float64
-	var b bool
-	var s string
+	var i int = 42
+	var f float64 = float64(i)
+	var u uint = uint(f)
 
-	fmt.Printf("%v %v %v %q\n", i, f, b, s)
+	fmt.Println(i, f, u)
 }
