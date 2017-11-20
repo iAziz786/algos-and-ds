@@ -4,10 +4,11 @@ import (
 	"fmt"
 )
 
-func main() {
-	var i int = 42
-	var f float64 = float64(i)
-	var u uint = uint(f)
+// When declaring a variable without explicity specifying it's type
+// Its type is inferred by the value on the right hand side
 
-	fmt.Println(i, f, u)
+func main() {
+	v := "Hello"
+
+	fmt.Printf("v is the typeof %T\n", v)
 }
