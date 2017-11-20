@@ -4,11 +4,12 @@ import (
 	"fmt"
 )
 
-// When declaring a variable without explicity specifying it's type
-// Its type is inferred by the value on the right hand side
+// constants are declared with 'const' keyword
+// const can be character, string, boolean or numbers
+// const cannot be declared using := syntax
 
 func main() {
-	v := "Hello"
-
-	fmt.Printf("v is the typeof %T\n", v)
+	const World = "世界"
+	
+	fmt.Println("Hello ", World)
 }
