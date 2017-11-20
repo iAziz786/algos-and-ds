@@ -1,14 +1,16 @@
 package main
 
-import "fmt"
-
-// Short variable declarations are ONLY AVAILABLE WITHIN func
-// So, := will not work here
+import (
+	"fmt"
+	"math/cmplx"
+)
 
 func main() {
-	var i, j int = 1, 2
-	k := 3 // Short variable declaration with implicit type
-	var c, python, java = true, false, "no!"
+	var (
+		ToBe bool = false
+		MaxInt uint64 = 1<<64 - 1
+		z complex128 = cmplx.Sqrt(-5 + 12i)
+	)
 
-	fmt.Println(i, j, k, c, python, java)
+	fmt.Println(ToBe, MaxInt, z)
 }
