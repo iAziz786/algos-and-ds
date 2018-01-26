@@ -1,15 +1,7 @@
 package main
 
-import (
-	"fmt"
-)
-
-// constants are declared with 'const' keyword
-// const can be character, string, boolean or numbers
-// const cannot be declared using := syntax
+import "fmt"
 
 func main() {
-	const World = "世界"
-	
-	fmt.Println("Hello ", World)
+	fmt.Println("Life is an experiment, so make a lot of them.")
 }
