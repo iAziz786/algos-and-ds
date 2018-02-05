@@ -16,10 +16,8 @@ func main() {
 		for i := 0; i < N; i++ {
 			fmt.Scan(&p)
 			fmt.Scan(&c)
-			if flag == 0 {
-				if p >= (X-Y) && c <= K {
-					flag = 1
-				}
+			if p >= (X-Y) && c <= K {
+				flag = 1
 			}
 		}
 		if flag > 0 {
