@@ -4,18 +4,11 @@ package main
 
 import "fmt"
 
-func getMax(a, b int) int {
+func getMaxMin(a, b int) (int, int) {
 	if a > b {
-		return a
+		return a, b
 	}
-	return b
-}
-
-func getMin(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
+	return b, a
 }
 
 func main() {
@@ -26,8 +19,7 @@ func main() {
 	fmt.Scan(&num1)
 	fmt.Scan(&num2)
 	if num1 != 0 || num2 != 0 {
-		dividend := getMax(num1, num2)
-		divider := getMin(num1, num2)
+		dividend, divider := getMaxMin(num1, num2)
 		reminder := dividend % divider
 		for reminder > 0 {
 			temp := divider
