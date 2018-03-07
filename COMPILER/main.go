@@ -11,14 +11,13 @@ func main() {
 	fmt.Scan(&T)
 	for ; T > 0; T-- {
 		var INST string
-		fmt.Scanf("%s", &INST)
+		fmt.Scan(&INST)
 		var (
 			count int
 			res   int
 		)
 		for i, val := range INST {
-			// ASCII for "<" = 60
-			if val == 60 {
+			if string(val) == "<" {
 				count++
 			} else {
 				count--
