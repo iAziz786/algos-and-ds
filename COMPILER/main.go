@@ -3,15 +3,30 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
+var reader *bufio.Reader
+
+func readStr() string {
+	str := []string{}
+	i, _ := reader.ReadByte()
+	for ; i != '\n'; i, _ = reader.ReadByte() {
+		str = append(str, string(i))
+	}
+	return strings.Join(str, "")
+}
+
 func main() {
+	reader = bufio.NewReader(os.Stdin)
 	var T int
 	fmt.Scan(&T)
 	for ; T > 0; T-- {
 		var INST string
-		fmt.Scan(&INST)
+		fmt.Fscan(reader, &INST)
 		var (
 			count int
 			res   int

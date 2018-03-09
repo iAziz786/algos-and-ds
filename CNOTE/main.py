@@ -6,7 +6,7 @@ def main():
         lucky = False
         for _ in range(N):
             P, C = list(map(int, input().split()))
-            if P >= (X - Y) and C <= K:
+            if lucky == False and P >= (X - Y) and C <= K:
                 lucky = True
         if lucky:
             print("LuckyChef")
