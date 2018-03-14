@@ -14,12 +14,9 @@ def main():
                     o -= 1
                 else:
                     c += 1
-        # if (o + c) % 2 == 0:
         ans += (o // 2) + (c // 2)
         if o % 2 == 1 and c % 2 == 1:
             ans += 2
-        # else:
-        #     pass
 
         print('{}. {}'.format(count, ans))
         count += 1
