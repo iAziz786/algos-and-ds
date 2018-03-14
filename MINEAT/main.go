@@ -1,4 +1,4 @@
-// Link to the problem: https://www.codechef.com/MARCH18B/problems/MINEAT
+// Link to the problem: https://www.codechef.com/problems/MINEAT
 
 package main
 
