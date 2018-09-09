@@ -1,3 +1,7 @@
+# MISC
+.vscode
+.idea
+
 # Ignoring PYTHON files
 # Byte-compiled / optimized / DLL files
 __pycache__/
