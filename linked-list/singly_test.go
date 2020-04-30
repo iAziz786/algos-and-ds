@@ -58,3 +58,14 @@ func TestSinglyLinkedList_HeadIntersion(t *testing.T) {
 		t.Fatal("failed to insert node at head")
 	}
 }
+
+func TestSinglyLinkedList_Push(t *testing.T) {
+	first := Node{value: 1, next: nil}
+	second := first.Push(&Node{value: 2})
+	_ = second.Push(&Node{value: 3})
+	output := getStdoutLogs(first.Print)
+	expectedOutput := "1\n2\n3\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", output, expectedOutput)
+	}
+}
