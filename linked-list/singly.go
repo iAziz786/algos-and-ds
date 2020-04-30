@@ -25,4 +25,9 @@ func (node *Node) Push(nodeToPush *Node) *Node {
 		}
 	}
 }
+
+// DeleteKey will delete first matching key of the node.
+// Returns true if successfully deleted otherwise false
+func (node *Node) DeleteKey(key int) bool {
+	return false
 }

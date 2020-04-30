@@ -20,41 +20,35 @@ func getStdoutLogs(fn func()) string {
 	return fmt.Sprintf("%s", out)
 }
 
+func linkNodes(length int) *Node {
+	if length == 0 {
+		return nil
+	}
+	node := Node{value: 1}
+	for i, initial := 1, &node; i < length; i++ {
+		nextNode := initial.Push(&Node{value: i + 1})
+		initial = nextNode
+	}
+	return &node
+}
+
 func TestSingly(t *testing.T) {
-	first := Node{value: 11}
-	second := Node{value: 22}
-	third := Node{value: 33}
-
-	first.next = &second
-	second.next = &third
-	// Start printing
-
+	first := linkNodes(3)
 	output := getStdoutLogs(first.Print)
 
-	if output != "11\n22\n33\n" {
-		t.Errorf("expected %s got %s", "11\n22\n33", output)
+	if output != "1\n2\n3\n" {
+		t.Errorf("expected %s got %s", "1\n2\n3", output)
 	}
 }
 
 func TestSinglyLinkedList_HeadIntersion(t *testing.T) {
-	first := Node{value: 11}
-	second := Node{value: 22}
-	third := Node{value: 33}
+	first := linkNodes(3)
 
-	third.value = 33
-	third.next = nil
-
-	second.value = 22
-	second.next = &third
-
-	first.value = 11
-	first.next = &second
-
-	newHead := Node{value: 55, next: &first}
+	newHead := Node{value: 4, next: first}
 
 	output := getStdoutLogs(newHead.Print)
 
-	if output != "55\n11\n22\n33\n" {
+	if output != "4\n1\n2\n3\n" {
 		t.Fatal("failed to insert node at head")
 	}
 }
