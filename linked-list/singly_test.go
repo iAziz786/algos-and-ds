@@ -63,3 +63,55 @@ func TestSinglyLinkedList_Push(t *testing.T) {
 		t.Errorf("Expected: %s\nGot: %s\n", output, expectedOutput)
 	}
 }
+
+func TestSinglyLinkedList_DeleteKeyInMiddle(t *testing.T) {
+	first := linkNodes(4)
+	// should delete an element in the middle
+	if first.Delete(2) != true {
+		t.Errorf("Failed to delete key %d\n", 2)
+	}
+	output := getStdoutLogs(first.Print)
+	expectedOutput := "1\n3\n4\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
+
+func TestSinglyLinkedList_DeleteKeyAtEnd(t *testing.T) {
+	first := linkNodes(4)
+	// should delete an element at the end
+	if first.Delete(4) != true {
+		t.Errorf("Failed to delete key %d\n", 4)
+	}
+	output := getStdoutLogs(first.Print)
+	expectedOutput := "1\n2\n3\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
+
+func TestSinglyLinkedList_DeleteKeyAtStart(t *testing.T) {
+	first := linkNodes(4)
+	// should delete an element at the end
+	if first.Delete(1) != true {
+		t.Errorf("Failed to delete key %d\n", 1)
+	}
+	output := getStdoutLogs(first.Print)
+	expectedOutput := "2\n3\n4\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
+
+func TestSinglyLinkedList_ShouldNotDelete(t *testing.T) {
+	first := linkNodes(4)
+	// should delete an element at the end
+	if first.Delete(6) != false {
+		t.Errorf("Accidentally deleted one key")
+	}
+	output := getStdoutLogs(first.Print)
+	expectedOutput := "1\n2\n3\n4\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}

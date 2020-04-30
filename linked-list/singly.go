@@ -1,6 +1,8 @@
 package singly
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Node will be used to create new nodes in the list
 type Node struct {
@@ -24,6 +26,32 @@ func (node *Node) Push(nodeToPush *Node) *Node {
 			return nodeToPush
 		}
 	}
+}
+
+// Delete the nodes with first matching key in the list
+func (node *Node) Delete(key int) bool {
+	var prevNode *Node
+	for ; node != nil; prevNode, node = node, node.next {
+		if node == nil {
+			return false
+		}
+		// Get previous value
+		if node.value == key {
+			// first element in the linked list
+			if prevNode == nil {
+				*node = *node.next
+				return true
+			}
+			// last element
+			if node.next == nil {
+				prevNode.next = nil
+				return true
+			}
+			prevNode.next = node.next
+			return true
+		}
+	}
+	return false
 }
 
 // DeleteKey will delete first matching key of the node.
