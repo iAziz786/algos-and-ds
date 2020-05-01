@@ -53,3 +53,29 @@ func (node *Node) DeleteKey(key int) bool {
 	}
 	return false
 }
+
+// DeleteElementAtIndex will delete an element matching an index
+func (node *Node) DeleteElementAtIndex(index int) bool {
+	var prevNode *Node
+	for i := 0; node != nil; i, prevNode, node = i+1, node, node.next {
+		if node == nil {
+			return false
+		}
+		// Get previous value
+		if i == index {
+			// first element in the linked list
+			if prevNode == nil {
+				*node = *node.next
+				return true
+			}
+			// last element
+			if node.next == nil {
+				prevNode.next = nil
+				return true
+			}
+			prevNode.next = node.next
+			return true
+		}
+	}
+	return false
+}
