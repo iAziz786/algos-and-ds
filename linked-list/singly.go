@@ -28,8 +28,8 @@ func (node *Node) Push(nodeToPush *Node) *Node {
 	}
 }
 
-// Delete the nodes with first matching key in the list
-func (node *Node) Delete(key int) bool {
+// DeleteKey the nodes with first matching key in the list
+func (node *Node) DeleteKey(key int) bool {
 	var prevNode *Node
 	for ; node != nil; prevNode, node = node, node.next {
 		if node == nil {
@@ -51,11 +51,5 @@ func (node *Node) Delete(key int) bool {
 			return true
 		}
 	}
-	return false
-}
-
-// DeleteKey will delete first matching key of the node.
-// Returns true if successfully deleted otherwise false
-func (node *Node) DeleteKey(key int) bool {
 	return false
 }

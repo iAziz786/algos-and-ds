@@ -67,7 +67,7 @@ func TestSinglyLinkedList_Push(t *testing.T) {
 func TestSinglyLinkedList_DeleteKeyInMiddle(t *testing.T) {
 	first := linkNodes(4)
 	// should delete an element in the middle
-	if first.Delete(2) != true {
+	if first.DeleteKey(2) != true {
 		t.Errorf("Failed to delete key %d\n", 2)
 	}
 	output := getStdoutLogs(first.Print)
@@ -80,7 +80,7 @@ func TestSinglyLinkedList_DeleteKeyInMiddle(t *testing.T) {
 func TestSinglyLinkedList_DeleteKeyAtEnd(t *testing.T) {
 	first := linkNodes(4)
 	// should delete an element at the end
-	if first.Delete(4) != true {
+	if first.DeleteKey(4) != true {
 		t.Errorf("Failed to delete key %d\n", 4)
 	}
 	output := getStdoutLogs(first.Print)
@@ -93,7 +93,7 @@ func TestSinglyLinkedList_DeleteKeyAtEnd(t *testing.T) {
 func TestSinglyLinkedList_DeleteKeyAtStart(t *testing.T) {
 	first := linkNodes(4)
 	// should delete an element at the end
-	if first.Delete(1) != true {
+	if first.DeleteKey(1) != true {
 		t.Errorf("Failed to delete key %d\n", 1)
 	}
 	output := getStdoutLogs(first.Print)
@@ -106,7 +106,7 @@ func TestSinglyLinkedList_DeleteKeyAtStart(t *testing.T) {
 func TestSinglyLinkedList_ShouldNotDelete(t *testing.T) {
 	first := linkNodes(4)
 	// should delete an element at the end
-	if first.Delete(6) != false {
+	if first.DeleteKey(6) != false {
 		t.Errorf("Accidentally deleted one key")
 	}
 	output := getStdoutLogs(first.Print)
