@@ -79,3 +79,25 @@ func (node *Node) DeleteElementAtIndex(index int) bool {
 	}
 	return false
 }
+
+// MakeMiddleNodeFirst finds the middle node and make it head of the list
+// And return the middle node
+func (node *Node) MakeMiddleNodeFirst() *Node {
+	if node == nil || node.next == nil {
+		return node
+	}
+	head := node
+	middleNode, prevNode := head, head
+	// find middle node
+	for node != nil && node.next != nil {
+		prevNode = middleNode
+		middleNode = middleNode.next
+		node = node.next.next
+	}
+	// make prevNode to point to next node of the middle node
+	prevNode.next = prevNode.next.next
+	// replace first node with middle node
+	middleNode.next = head
+
+	return middleNode
+}

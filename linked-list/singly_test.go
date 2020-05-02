@@ -166,3 +166,33 @@ func TestSinglyLinkedList_ShouldNotDeleteAtIndex(t *testing.T) {
 		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
 	}
 }
+
+func TestSinglyListList_MakeMiddleNodeFirst(t *testing.T) {
+	first := linkNodes(5)
+	newHead := first.MakeMiddleNodeFirst()
+	output := getStdoutLogs(newHead.Print)
+	expectedOutput := "3\n1\n2\n4\n5\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
+
+func TestSinglyListList_MakeMiddleNodeFirstWithTwoNodes(t *testing.T) {
+	first := linkNodes(2)
+	newHead := first.MakeMiddleNodeFirst()
+	output := getStdoutLogs(newHead.Print)
+	expectedOutput := "2\n1\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
+
+func TestSinglyListList_MakeMiddleNodeFirstWithSingleNodes(t *testing.T) {
+	first := linkNodes(1)
+	newHead := first.MakeMiddleNodeFirst()
+	output := getStdoutLogs(newHead.Print)
+	expectedOutput := "1\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
