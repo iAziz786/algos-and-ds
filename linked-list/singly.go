@@ -101,3 +101,37 @@ func (node *Node) MakeMiddleNodeFirst() *Node {
 
 	return middleNode
 }
+
+func moveNode(dest **Node, source **Node) {
+	newNode := *source
+	if newNode != nil {
+		*source = newNode.next
+		newNode.next = *dest
+		*dest = newNode
+	}
+}
+
+// MergeTwoSortedList will takes the head of two sorted list and
+// returns the head newly merged array.
+func MergeTwoSortedList(fSorted *Node, sSorted *Node) *Node {
+	var result *Node = nil
+
+	lastPtrRef := &result
+
+	for {
+		if fSorted == nil {
+			*lastPtrRef = sSorted
+			break
+		} else if sSorted == nil {
+			*lastPtrRef = fSorted
+			break
+		}
+		if fSorted.value <= sSorted.value {
+			moveNode(lastPtrRef, &fSorted)
+		} else {
+			moveNode(lastPtrRef, &sSorted)
+		}
+		lastPtrRef = &((*lastPtrRef).next)
+	}
+	return result
+}

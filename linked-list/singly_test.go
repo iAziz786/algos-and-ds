@@ -196,3 +196,27 @@ func TestSinglyListList_MakeMiddleNodeFirstWithSingleNodes(t *testing.T) {
 		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
 	}
 }
+
+func TestSinglyListList_MergeTwoSortedListCorrectly(t *testing.T) {
+	first := linkNodes(3)
+	second := linkNodes(5)
+	newHead := MergeTwoSortedList(first, second)
+	output := getStdoutLogs(newHead.Print)
+	expectedOutput := "1\n1\n2\n2\n3\n3\n4\n5\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
+func TestSinglyListList_MergeTwoSortedListWithTwoElement(t *testing.T) {
+	first := &Node{value: 3}
+	first.Push(&Node{value: 5})
+
+	second := &Node{value: 7}
+	second.Push(&Node{value: 11})
+	newHead := MergeTwoSortedList(first, second)
+	output := getStdoutLogs(newHead.Print)
+	expectedOutput := "3\n5\n7\n11\n"
+	if output != expectedOutput {
+		t.Errorf("Expected: %s\nGot: %s\n", expectedOutput, output)
+	}
+}
