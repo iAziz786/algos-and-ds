@@ -1,3 +1,3 @@
-module github.com/iAziz786/algos-and-ds
+module github.com/iAziz786/algosandds
 
 go 1.14
