@@ -26,7 +26,7 @@ func newNode(val int) *node {
 	}
 }
 
-func NewLinkedList() *LinkedList {
+func New() *LinkedList {
 	return &LinkedList{
 		node: nil,
 	}

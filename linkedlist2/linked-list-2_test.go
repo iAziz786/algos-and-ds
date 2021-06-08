@@ -7,7 +7,7 @@ import (
 )
 
 func TestLinkedList_NewLinkedList(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	if !ll.Empty() {
 		t.Errorf("size != %t but %t", true, ll.Empty())
@@ -15,7 +15,7 @@ func TestLinkedList_NewLinkedList(t *testing.T) {
 }
 
 func TestLinkedList_ValueAt(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushFront(42)
 	ll.PushFront(43)
@@ -34,7 +34,7 @@ func TestLinkedList_ValueAt(t *testing.T) {
 }
 
 func TestLinkedList_PushFront(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushFront(42)
 
@@ -44,7 +44,7 @@ func TestLinkedList_PushFront(t *testing.T) {
 }
 
 func TestLinkedList_PopFront(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	if err := ll.PopFront(); err == nil {
 		t.Errorf("empty list pop should return error\n")
@@ -67,7 +67,7 @@ func TestLinkedList_PopFront(t *testing.T) {
 }
 
 func TestLinkedList_PushBack(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushBack(87)
 
@@ -91,7 +91,7 @@ func TestLinkedList_PushBack(t *testing.T) {
 }
 
 func TestLinkedList_PopBack(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PopBack()
 
@@ -125,7 +125,7 @@ func TestLinkedList_PopBack(t *testing.T) {
 }
 
 func TestLinkedList_InsertFirst(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.Insert(0, 1)
 
@@ -135,7 +135,7 @@ func TestLinkedList_InsertFirst(t *testing.T) {
 }
 
 func TestLinkedList_InsertMiddle(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushFront(3)
 	ll.PushFront(1)
@@ -152,7 +152,7 @@ func TestLinkedList_InsertMiddle(t *testing.T) {
 }
 
 func TestLinkedList_InsertLast(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushFront(1)
 	ll.Insert(1, 2)
@@ -163,7 +163,7 @@ func TestLinkedList_InsertLast(t *testing.T) {
 }
 
 func TestLinkedList_ReverseEmpty(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.Reverse()
 
@@ -173,7 +173,7 @@ func TestLinkedList_ReverseEmpty(t *testing.T) {
 }
 
 func TestLinkedList_ReverseSingle(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushFront(1)
 	ll.Reverse()
@@ -184,7 +184,7 @@ func TestLinkedList_ReverseSingle(t *testing.T) {
 }
 
 func TestLinkedList_ReverseOddElements(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushBack(1)
 	ll.PushBack(2)
@@ -205,7 +205,7 @@ func TestLinkedList_ReverseOddElements(t *testing.T) {
 }
 
 func TestLinkedList_ReverseEvenElements(t *testing.T) {
-	ll := linkedlist2.NewLinkedList()
+	ll := linkedlist2.New()
 
 	ll.PushBack(1)
 	ll.PushBack(2)
