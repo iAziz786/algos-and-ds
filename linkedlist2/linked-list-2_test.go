@@ -241,3 +241,64 @@ func TestLinkedList_ReverseEvenElements(t *testing.T) {
 		}
 	}
 }
+
+func TestLinkedList_Erase(t *testing.T) {
+	ll := linkedlist2.New()
+
+	ll.PushBack(1)
+	ll.PushBack(2)
+	ll.PushBack(3)
+	ll.PushBack(4)
+	ll.PushBack(5)
+
+	tests := []struct {
+		name            string
+		idxToRemove     uint64
+		currentValAtIdx int
+	}{
+		{
+			name:            "middle deletion",
+			idxToRemove:     2,
+			currentValAtIdx: 4,
+		},
+		{
+			name:            "last deletion",
+			idxToRemove:     3,
+			currentValAtIdx: 0, // if the index is not present it returns nil value
+		},
+		{
+			name:            "front deletion",
+			idxToRemove:     0,
+			currentValAtIdx: 2, // if the index is not present it returns nil value
+		},
+		{
+			name:            "front deletion",
+			idxToRemove:     0,
+			currentValAtIdx: 4, // if the index is not present it returns nil value
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			ll.Erase(tt.idxToRemove)
+			if val, _ := ll.ValueAt(uint64(tt.idxToRemove)); val != tt.currentValAtIdx {
+				t.Errorf("want %d, got %d", tt.currentValAtIdx, val)
+			}
+		})
+	}
+}
+
+func TestLinkedList_Erase_Single(t *testing.T) {
+	ll := linkedlist2.New()
+
+	ll.PushBack(1)
+
+	ll.Erase(0)
+	if size := ll.Size(); size != 0 {
+		t.Errorf("expected size to be %d, got %d", 0, size)
+	}
+
+	if _, err := ll.ValueAt(0); err == nil {
+		t.Errorf("if the list is empty it should return error")
+	}
+}

@@ -6,8 +6,6 @@ import (
 
 type Q struct {
 	items *linkedlist2.LinkedList
-	head  *int
-	tail  *int
 }
 
 func New() *Q {
@@ -27,7 +25,10 @@ func (q *Q) Dequeue() *int {
 		return nil
 	}
 	q.items.PopFront()
-	return &res
+	if val, ok := res.(int); ok {
+		return &val
+	}
+	return nil
 }
 
 func (q Q) Empty() bool {

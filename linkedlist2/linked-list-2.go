@@ -10,7 +10,7 @@ var (
 )
 
 type node struct {
-	value int
+	value interface{}
 	next  *node
 	// prev  *node
 }
@@ -20,7 +20,7 @@ type LinkedList struct {
 	size uint64
 }
 
-func newNode(val int) *node {
+func newNode(val interface{}) *node {
 	return &node{
 		value: val,
 	}
@@ -41,14 +41,14 @@ func (ll LinkedList) Empty() bool {
 }
 
 // PushFront will add an item to the front of the linked list
-func (ll *LinkedList) PushFront(val int) {
+func (ll *LinkedList) PushFront(val interface{}) {
 	newNode := newNode(val)
 
 	newNode.next = ll.node
 
 	ll.node = newNode
 
-	ll.size += 1
+	ll.setSize(ll.size + 1)
 }
 
 // PopFront will remove an item to the front of the linked list
@@ -58,13 +58,13 @@ func (ll *LinkedList) PopFront() error {
 	}
 
 	ll.node = ll.node.next
-	ll.size -= 1
+	ll.setSize(ll.size - 1)
 
 	return nil
 }
 
 // PushBack will add an item to the end of the linked list
-func (ll *LinkedList) PushBack(val int) {
+func (ll *LinkedList) PushBack(val interface{}) {
 	lastNode := &ll.node
 
 	for *lastNode != nil {
@@ -72,7 +72,7 @@ func (ll *LinkedList) PushBack(val int) {
 	}
 
 	*lastNode = newNode(val)
-	ll.size += 1
+	ll.setSize(ll.size + 1)
 }
 
 // PopBack will remove an item from the end of the linked list
@@ -85,12 +85,11 @@ func (ll *LinkedList) PopBack() {
 
 	*lastNode = nil
 
-	ll.size -= 1
-	ll.size += (ll.size >> 63)
+	ll.setSize(ll.size - 1)
 }
 
 // Push will add an item to the front of the linked list
-func (ll *LinkedList) ValueAt(index uint64) (int, error) {
+func (ll *LinkedList) ValueAt(index uint64) (interface{}, error) {
 	var nodeToFind *node
 
 	// Out of range should return immediately
@@ -115,7 +114,7 @@ func (ll *LinkedList) ValueAt(index uint64) (int, error) {
 
 // Insert will add an item to the index of the linked list. It panics if index
 // is out of range.
-func (ll *LinkedList) Insert(idx, val int) {
+func (ll *LinkedList) Insert(idx int, val interface{}) {
 	findingNode := &ll.node
 
 	for i := 0; i < idx; i++ {
@@ -126,7 +125,7 @@ func (ll *LinkedList) Insert(idx, val int) {
 	*findingNode = newNode(val)
 	(*findingNode).next = prevNode
 
-	ll.size += 1
+	ll.setSize(ll.size + 1)
 }
 
 // Reverse will reverse the linked list
@@ -143,4 +142,26 @@ func (ll *LinkedList) Reverse() {
 	}
 
 	*head = prevNode
+}
+
+// Erase will remove the item on the provided index, if any
+func (ll *LinkedList) Erase(idx uint64) {
+	removingNode := &ll.node
+
+	var nextNode **node = &(*removingNode).next
+	for i := 0; uint64(i) < idx; i++ {
+		removingNode = nextNode
+		nextNode = &(*nextNode).next
+	}
+
+	*removingNode = *nextNode
+	ll.setSize(ll.size - 1)
+}
+
+// setSize handles the edge cases in case of setting the size. If you provide
+// a non unsigned value it will set to zero since that's the minimal possible
+// size can have a linked list
+func (ll *LinkedList) setSize(size uint64) {
+	ll.size = size
+	ll.size += (ll.size >> 63)
 }
